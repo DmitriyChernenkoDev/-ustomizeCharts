@@ -456,7 +456,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
         if (!mCustomViewPortEnabled) {
 
-            float offsetLeft = 0f, offsetRight = 0f, offsetTop = 0f, offsetBottom = 0f;
+            float offsetLeft = 0f, offsetRight = 0f, offsetTop = 0f, offsetBottom = 0f; //offsetBottom = 33f; for rn_Chart, 0 for other
 
             calculateLegendOffsets(mOffsetsBuffer);
 
@@ -467,13 +467,15 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
             // offsets for y-labels
             if (mAxisLeft.needsOffset()) {
-                offsetLeft += mAxisLeft.getRequiredWidthSpace(mAxisRendererLeft
-                        .getPaintAxisLabels());
+//                offsetLeft += mAxisLeft.getRequiredWidthSpace(mAxisRendererLeft
+//                        .getPaintAxisLabels());
+                offsetLeft = 50f;
             }
-
+//
             if (mAxisRight.needsOffset()) {
-                offsetRight += mAxisRight.getRequiredWidthSpace(mAxisRendererRight
-                        .getPaintAxisLabels());
+//                offsetRight += mAxisRight.getRequiredWidthSpace(mAxisRendererRight
+//                        .getPaintAxisLabels());
+                offsetRight += 160f;
             }
 
             if (mXAxis.isEnabled() && mXAxis.isDrawLabelsEnabled()) {
