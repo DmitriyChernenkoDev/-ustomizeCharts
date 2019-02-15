@@ -10,7 +10,7 @@ https://github.com/PhilJay/MPAndroidChart
 file MPAndroidChart/MPChartLib/src/main/java/com/github/mikephil/charting/charts/BarLineChartBase.java
 -----
 
-change method calculateOffsets
+change method <b>calculateOffsets</b>
 
 
             float offsetLeft = 0f, offsetRight = 0f, offsetTop = 0f, offsetBottom = 0f; //offsetBottom = 33f; for rn_Chart, 0 for other
