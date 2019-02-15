@@ -23,13 +23,14 @@ public class YAxisRenderer extends AxisRenderer {
     protected YAxis mYAxis;
 
     protected Paint mZeroLinePaint;
+    private String text;
 
     public YAxisRenderer(ViewPortHandler viewPortHandler, YAxis yAxis, Transformer trans) {
         super(viewPortHandler, trans, yAxis);
 
         this.mYAxis = yAxis;
 
-        if(mViewPortHandler != null) {
+        if (mViewPortHandler != null) {
 
             mAxisLabelPaint.setColor(Color.BLACK);
             mAxisLabelPaint.setTextSize(Utils.convertDpToPixel(10f));
@@ -49,6 +50,7 @@ public class YAxisRenderer extends AxisRenderer {
 
         if (!mYAxis.isEnabled() || !mYAxis.isDrawLabelsEnabled())
             return;
+
 
         float[] positions = getTransformedPositions();
 
@@ -125,10 +127,15 @@ public class YAxisRenderer extends AxisRenderer {
             String text = mYAxis.getFormattedLabel(i);
 
             c.drawText(text, fixedPosition, positions[i * 2 + 1] + offset, mAxisLabelPaint);
+
         }
+
+        //draw indicator block
+        renderIndicatorBlock(c, fixedPosition, positions, offset);
     }
 
     protected Path mRenderGridLinesPath = new Path();
+
     @Override
     public void renderGridLines(Canvas c) {
 
@@ -190,6 +197,7 @@ public class YAxisRenderer extends AxisRenderer {
     }
 
     protected float[] mGetTransformedPositionsBuffer = new float[2];
+
     /**
      * Transforms the values contained in the axis entries to screen pixels and returns them in form of a float array
      * of x- and y-coordinates.
@@ -198,7 +206,7 @@ public class YAxisRenderer extends AxisRenderer {
      */
     protected float[] getTransformedPositions() {
 
-        if(mGetTransformedPositionsBuffer.length != mYAxis.mEntryCount * 2){
+        if (mGetTransformedPositionsBuffer.length != mYAxis.mEntryCount * 2) {
             mGetTransformedPositionsBuffer = new float[mYAxis.mEntryCount * 2];
         }
         float[] positions = mGetTransformedPositionsBuffer;
@@ -246,6 +254,7 @@ public class YAxisRenderer extends AxisRenderer {
     protected Path mRenderLimitLines = new Path();
     protected float[] mRenderLimitLinesBuffer = new float[2];
     protected RectF mLimitLineClippingRect = new RectF();
+
     /**
      * Draws the LimitLines associated with this axis to the screen.
      *
@@ -342,6 +351,39 @@ public class YAxisRenderer extends AxisRenderer {
             }
 
             c.restoreToCount(clipRestoreCount);
+        }
+    }
+
+    private void renderIndicatorBlock(Canvas c, float positionX, float[] positions, float offset) {
+        List<LimitLine> limitLines = mYAxis.getLimitLines();
+        if (limitLines == null || limitLines.size() <= 0)
+            return;
+
+        float limitIndicatorBlock = limitLines.get(0).getLimit();
+        int indicatorBlockColor = limitLines.get(0).getLineColor();
+        Paint paint = new Paint();
+
+        paint.setColor(indicatorBlockColor);
+        paint.setStyle(Paint.Style.FILL);
+
+        float limitFirst = mYAxis.mEntries[0];
+        float gradeFirst = positions[1];
+
+        float limitSecond = mYAxis.mEntries[1];
+        float gradeSecond = positions[3];
+
+        float limitDifferent = limitSecond - limitFirst;
+        float gradeDifferent = gradeFirst - gradeSecond;
+
+        float different = limitIndicatorBlock - limitSecond;
+        float differentRangeFromZero = ((different * gradeDifferent) / limitDifferent);
+        float ourRange = gradeSecond - differentRangeFromZero;
+
+        mAxisLabelPaint.setColor(Color.WHITE);
+
+        if (ourRange > 10 ) {
+            c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 160, ourRange + 7 + offset, paint);
+            c.drawText("" + limitIndicatorBlock, positionX - 11, ourRange + offset, mAxisLabelPaint);
         }
     }
 }
