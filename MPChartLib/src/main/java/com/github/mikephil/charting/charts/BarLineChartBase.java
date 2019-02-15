@@ -212,14 +212,9 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
         mAxisRendererLeft.renderAxisLine(canvas);
         mAxisRendererRight.renderAxisLine(canvas);
 
-        if (mXAxis.isDrawGridLinesBehindDataEnabled())
-            mXAxisRenderer.renderGridLines(canvas);
-
-        if (mAxisLeft.isDrawGridLinesBehindDataEnabled())
-            mAxisRendererLeft.renderGridLines(canvas);
-
-        if (mAxisRight.isDrawGridLinesBehindDataEnabled())
-            mAxisRendererRight.renderGridLines(canvas);
+        mXAxisRenderer.renderGridLines(canvas);
+        mAxisRendererLeft.renderGridLines(canvas);
+        mAxisRendererRight.renderGridLines(canvas);
 
         if (mXAxis.isEnabled() && mXAxis.isDrawLimitLinesBehindDataEnabled())
             mXAxisRenderer.renderLimitLines(canvas);
@@ -235,15 +230,6 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
         canvas.clipRect(mViewPortHandler.getContentRect());
 
         mRenderer.drawData(canvas);
-
-        if (!mXAxis.isDrawGridLinesBehindDataEnabled())
-            mXAxisRenderer.renderGridLines(canvas);
-
-        if (!mAxisLeft.isDrawGridLinesBehindDataEnabled())
-            mAxisRendererLeft.renderGridLines(canvas);
-
-        if (!mAxisRight.isDrawGridLinesBehindDataEnabled())
-            mAxisRendererRight.renderGridLines(canvas);
 
         // if highlighting is enabled
         if (valuesToHighlight())
@@ -441,12 +427,18 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
                             offsets.top += Math.min(mLegend.mNeededHeight,
                                     mViewPortHandler.getChartHeight() * mLegend.getMaxSizePercent())
                                     + mLegend.getYOffset();
+
+                            if (getXAxis().isEnabled() && getXAxis().isDrawLabelsEnabled())
+                                offsets.top += getXAxis().mLabelRotatedHeight;
                             break;
 
                         case BOTTOM:
                             offsets.bottom += Math.min(mLegend.mNeededHeight,
                                     mViewPortHandler.getChartHeight() * mLegend.getMaxSizePercent())
                                     + mLegend.getYOffset();
+
+                            if (getXAxis().isEnabled() && getXAxis().isDrawLabelsEnabled())
+                                offsets.bottom += getXAxis().mLabelRotatedHeight;
                             break;
 
                         default:
@@ -464,7 +456,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
         if (!mCustomViewPortEnabled) {
 
-            float offsetLeft = 0f, offsetRight = 0f, offsetTop = 0f, offsetBottom = 0f; //offsetBottom = 33f; for rn_Chart, 0 for other
+            float offsetLeft = 0f, offsetRight = 0f, offsetTop = 0f, offsetBottom = 0f;
 
             calculateLegendOffsets(mOffsetsBuffer);
 
@@ -475,34 +467,32 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
             // offsets for y-labels
             if (mAxisLeft.needsOffset()) {
-//                offsetLeft += mAxisLeft.getRequiredWidthSpace(mAxisRendererLeft
-//                        .getPaintAxisLabels());
-                offsetLeft = 50f;
+                offsetLeft += mAxisLeft.getRequiredWidthSpace(mAxisRendererLeft
+                        .getPaintAxisLabels());
             }
-//
+
             if (mAxisRight.needsOffset()) {
-//                offsetRight += mAxisRight.getRequiredWidthSpace(mAxisRendererRight
-//                        .getPaintAxisLabels());
-                offsetRight += 160f;
+                offsetRight += mAxisRight.getRequiredWidthSpace(mAxisRendererRight
+                        .getPaintAxisLabels());
             }
 
             if (mXAxis.isEnabled() && mXAxis.isDrawLabelsEnabled()) {
 
-                float xLabelHeight = mXAxis.mLabelRotatedHeight + mXAxis.getYOffset();
+                float xlabelheight = mXAxis.mLabelRotatedHeight + mXAxis.getYOffset();
 
                 // offsets for x-labels
                 if (mXAxis.getPosition() == XAxisPosition.BOTTOM) {
 
-                    offsetBottom += xLabelHeight;
+                    offsetBottom += xlabelheight;
 
                 } else if (mXAxis.getPosition() == XAxisPosition.TOP) {
 
-                    offsetTop += xLabelHeight;
+                    offsetTop += xlabelheight;
 
                 } else if (mXAxis.getPosition() == XAxisPosition.BOTH_SIDED) {
 
-                    offsetBottom += xLabelHeight;
-                    offsetTop += xLabelHeight;
+                    offsetBottom += xlabelheight;
+                    offsetTop += xlabelheight;
                 }
             }
 
@@ -1234,7 +1224,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
     /**
      * When enabled, the values will be clipped to contentRect,
-     * otherwise they can bleed outside the content rect.
+     *   otherwise they can bleed outside the content rect.
      *
      * @param enabled
      */
@@ -1244,7 +1234,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
     /**
      * When enabled, the values will be clipped to contentRect,
-     * otherwise they can bleed outside the content rect.
+     *   otherwise they can bleed outside the content rect.
      *
      * @return
      */
