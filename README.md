@@ -7,12 +7,12 @@ https://github.com/PhilJay/MPAndroidChart
 ## Classes wich where changed
 
 1. Remove culculated offset in Y axis
------
 file MPAndroidChart/MPChartLib/src/main/java/com/github/mikephil/charting/charts/BarLineChartBase.java
+-----
 
 change method calculateOffsets
 
-//code
+
             float offsetLeft = 0f, offsetRight = 0f, offsetTop = 0f, offsetBottom = 0f; //offsetBottom = 33f; for rn_Chart, 0 for other
 
             calculateLegendOffsets(mOffsetsBuffer);
@@ -24,15 +24,15 @@ change method calculateOffsets
 
             // offsets for y-labels
             if (mAxisLeft.needsOffset()) {
-//                offsetLeft += mAxisLeft.getRequiredWidthSpace(mAxisRendererLeft
-//                        .getPaintAxisLabels());
+            //          offsetLeft += mAxisLeft.getRequiredWidthSpace(mAxisRendererLeft
+            //          .getPaintAxisLabels());
                 offsetLeft = 50f;
             }
-//
+
             if (mAxisRight.needsOffset()) {
-//                offsetRight += mAxisRight.getRequiredWidthSpace(mAxisRendererRight
-//                        .getPaintAxisLabels());
+            //           offsetRight += mAxisRight.getRequiredWidthSpace(mAxisRendererRight
+            //           .getPaintAxisLabels());
                 offsetRight += 160f;
             }
-// end
+            
 -----
