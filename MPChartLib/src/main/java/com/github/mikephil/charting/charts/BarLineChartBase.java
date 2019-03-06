@@ -1420,6 +1420,14 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
         else
             return mViewPortHandler.getScaleY();
     }
+    
+    public void setCurrentScaleX(float scaleX){
+        mViewPortHandler.setCurrentScaleX(scaleX);
+    }
+
+    public void setCurrentScaleY(float scaleY){
+        mViewPortHandler.setCurrentScaleY(scaleY);
+    }
 
     /**
      * if the chart is fully zoomed out, return true
