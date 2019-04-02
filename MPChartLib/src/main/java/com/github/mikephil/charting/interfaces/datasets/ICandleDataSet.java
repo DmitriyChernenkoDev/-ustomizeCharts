@@ -82,5 +82,4 @@ public interface ICandleDataSet extends ILineScatterCandleRadarDataSet<CandleEnt
      * @return
      */
     boolean getShadowColorSameAsCandle();
-
 }
