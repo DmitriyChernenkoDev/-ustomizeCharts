@@ -82,7 +82,7 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
             final float high = e.getHigh();
             final float low = e.getLow();
 
-            if (showCandleBar) {
+            if (false) {
                 // calculate the shadow
 
                 mShadowBuffers[0] = xPos;
