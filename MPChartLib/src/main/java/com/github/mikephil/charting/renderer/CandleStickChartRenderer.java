@@ -61,7 +61,7 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
         float phaseY = mAnimator.getPhaseY();
         float barSpace = dataSet.getBarSpace();
         boolean showCandleBar = dataSet.getShowCandleBar();
-        boolean isCandleBar = dataSet.getIsCandleBar();
+
 
         mXBounds.set(mChart, dataSet);
 
@@ -148,7 +148,7 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
                 c.drawLines(mShadowBuffers, mRenderPaint);
 
                 // calculate the body
-                if (isCandleBar) {
+                if (true) {
 
                 } else {
                     mBodyBuffers[0] = xPos - 0.5f + barSpace;
