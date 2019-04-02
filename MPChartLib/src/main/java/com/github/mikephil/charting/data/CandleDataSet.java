@@ -41,6 +41,11 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
     private boolean mShadowColorSameAsCandle = false;
 
     /**
+     * set true, if need to show candle bar
+     */
+    private boolean isCandleBar = false;
+
+    /**
      * paint style when open < close
      * increasing candlesticks are traditionally hollow
      */
@@ -79,25 +84,29 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
 
     @Override
     public DataSet<CandleEntry> copy() {
-
-        List<CandleEntry> yVals = new ArrayList<CandleEntry>();
-        yVals.clear();
-
+        List<CandleEntry> entries = new ArrayList<CandleEntry>();
         for (int i = 0; i < mValues.size(); i++) {
-            yVals.add(mValues.get(i).copy());
+            entries.add(mValues.get(i).copy());
         }
-
-        CandleDataSet copied = new CandleDataSet(yVals, getLabel());
-        copied.mColors = mColors;
-        copied.mShadowWidth = mShadowWidth;
-        copied.mShowCandleBar = mShowCandleBar;
-        copied.mBarSpace = mBarSpace;
-        copied.mHighLightColor = mHighLightColor;
-        copied.mIncreasingPaintStyle = mIncreasingPaintStyle;
-        copied.mDecreasingPaintStyle = mDecreasingPaintStyle;
-        copied.mShadowColor = mShadowColor;
-
+        CandleDataSet copied = new CandleDataSet(entries, getLabel());
+        copy(copied);
         return copied;
+    }
+
+    protected void copy(CandleDataSet candleDataSet) {
+        super.copy(candleDataSet);
+        candleDataSet.mShadowWidth = mShadowWidth;
+        candleDataSet.mShowCandleBar = mShowCandleBar;
+        candleDataSet.mBarSpace = mBarSpace;
+        candleDataSet.mShadowColorSameAsCandle = mShadowColorSameAsCandle;
+        candleDataSet.isCandleBar = isCandleBar;
+        candleDataSet.mHighLightColor = mHighLightColor;
+        candleDataSet.mIncreasingPaintStyle = mIncreasingPaintStyle;
+        candleDataSet.mDecreasingPaintStyle = mDecreasingPaintStyle;
+        candleDataSet.mNeutralColor = mNeutralColor;
+        candleDataSet.mIncreasingColor = mIncreasingColor;
+        candleDataSet.mDecreasingColor = mDecreasingColor;
+        candleDataSet.mShadowColor = mShadowColor;
     }
 
     @Override
@@ -288,5 +297,18 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
      */
     public void setShadowColorSameAsCandle(boolean shadowColorSameAsCandle) {
         this.mShadowColorSameAsCandle = shadowColorSameAsCandle;
+    }
+
+    public boolean getIsCandleBar() {
+        return isCandleBar;
+    }
+
+    /**
+     * Sets is need to show candle bar
+     *
+     * @param isCandleBar
+     */
+    public void setIsCandleBar(boolean isCandleBar) {
+        this.isCandleBar = isCandleBar;
     }
 }
