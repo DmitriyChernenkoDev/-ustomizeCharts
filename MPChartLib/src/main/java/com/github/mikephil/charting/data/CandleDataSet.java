@@ -297,17 +297,4 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
     public void setShadowColorSameAsCandle(boolean shadowColorSameAsCandle) {
         this.mShadowColorSameAsCandle = shadowColorSameAsCandle;
     }
-
-    public boolean getIsCandleBar() {
-        return isCandleBar;
-    }
-
-    /**
-     * Sets is need to show candle bar
-     *
-     * @param isCandleBar
-     */
-    public void setIsCandleBar(boolean isCandleBar) {
-        this.isCandleBar = isCandleBar;
-    }
 }
