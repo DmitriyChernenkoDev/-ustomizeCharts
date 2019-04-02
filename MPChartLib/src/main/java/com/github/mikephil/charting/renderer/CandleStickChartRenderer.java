@@ -82,7 +82,7 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
             final float high = e.getHigh();
             final float low = e.getLow();
 
-            if (false) {
+            if (showCandleBar) {
                 // calculate the shadow
 
                 mShadowBuffers[0] = xPos;
@@ -147,9 +147,6 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
                 c.drawLines(mShadowBuffers, mRenderPaint);
 
                 // calculate the body
-                if (true) {
-
-                } else {
                 mBodyBuffers[0] = xPos - 0.5f + barSpace;
                 mBodyBuffers[1] = close * phaseY;
                 mBodyBuffers[2] = (xPos + 0.5f - barSpace);
@@ -199,7 +196,6 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
                             mBodyBuffers[0], mBodyBuffers[1],
                             mBodyBuffers[2], mBodyBuffers[3],
                             mRenderPaint);
-                }
                 }
             } else {
 
