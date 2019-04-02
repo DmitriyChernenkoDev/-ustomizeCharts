@@ -756,24 +756,4 @@ public class ViewPortHandler {
     public boolean canZoomInMoreY() {
         return mScaleY < mMaxScaleY;
     }
-    
-     /**
-     * Set current scale by axis X
-     * bounds on the y-axis.
-     *
-     * @param scaleX
-     */
-    public void setCurrentScaleX(float scaleX) {
-        mScaleX = scaleX;
-    }
-
-    /**
-     * Set current scale by axis Y
-     * bounds on the y-axis.
-     *
-     * @param scaleY
-     */
-    public void setCurrentScaleY(float scaleY) {
-        mScaleY = scaleY;
-    }
 }
