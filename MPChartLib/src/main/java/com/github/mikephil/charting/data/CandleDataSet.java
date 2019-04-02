@@ -41,11 +41,6 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
     private boolean mShadowColorSameAsCandle = false;
 
     /**
-     * set true, if need to show candle bar
-     */
-    private boolean isCandleBar = true;
-
-    /**
      * paint style when open < close
      * increasing candlesticks are traditionally hollow
      */
