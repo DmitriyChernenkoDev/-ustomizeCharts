@@ -43,7 +43,7 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
     /**
      * set true, if need to show candle bar
      */
-    private boolean isCandleBar = false;
+    private boolean isCandleBar = true;
 
     /**
      * paint style when open < close
@@ -99,7 +99,6 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
         candleDataSet.mShowCandleBar = mShowCandleBar;
         candleDataSet.mBarSpace = mBarSpace;
         candleDataSet.mShadowColorSameAsCandle = mShadowColorSameAsCandle;
-        candleDataSet.isCandleBar = isCandleBar;
         candleDataSet.mHighLightColor = mHighLightColor;
         candleDataSet.mIncreasingPaintStyle = mIncreasingPaintStyle;
         candleDataSet.mDecreasingPaintStyle = mDecreasingPaintStyle;
