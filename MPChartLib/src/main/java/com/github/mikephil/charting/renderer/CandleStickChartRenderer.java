@@ -61,6 +61,7 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
         float phaseY = mAnimator.getPhaseY();
         float barSpace = dataSet.getBarSpace();
         boolean showCandleBar = dataSet.getShowCandleBar();
+        boolean isCandleBar = dataSet.getIsCandleBar();
 
         mXBounds.set(mChart, dataSet);
 
@@ -147,56 +148,59 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
                 c.drawLines(mShadowBuffers, mRenderPaint);
 
                 // calculate the body
+                if (isCandleBar) {
 
-                mBodyBuffers[0] = xPos - 0.5f + barSpace;
-                mBodyBuffers[1] = close * phaseY;
-                mBodyBuffers[2] = (xPos + 0.5f - barSpace);
-                mBodyBuffers[3] = open * phaseY;
+                } else {
+                    mBodyBuffers[0] = xPos - 0.5f + barSpace;
+                    mBodyBuffers[1] = close * phaseY;
+                    mBodyBuffers[2] = (xPos + 0.5f - barSpace);
+                    mBodyBuffers[3] = open * phaseY;
 
-                trans.pointValuesToPixel(mBodyBuffers);
+                    trans.pointValuesToPixel(mBodyBuffers);
 
-                // draw body differently for increasing and decreasing entry
-                if (open > close) { // decreasing
+                    // draw body differently for increasing and decreasing entry
+                    if (open > close) { // decreasing
 
-                    if (dataSet.getDecreasingColor() == ColorTemplate.COLOR_NONE) {
-                        mRenderPaint.setColor(dataSet.getColor(j));
-                    } else {
-                        mRenderPaint.setColor(dataSet.getDecreasingColor());
+                        if (dataSet.getDecreasingColor() == ColorTemplate.COLOR_NONE) {
+                            mRenderPaint.setColor(dataSet.getColor(j));
+                        } else {
+                            mRenderPaint.setColor(dataSet.getDecreasingColor());
+                        }
+
+                        mRenderPaint.setStyle(dataSet.getDecreasingPaintStyle());
+
+                        c.drawRect(
+                                mBodyBuffers[0], mBodyBuffers[3],
+                                mBodyBuffers[2], mBodyBuffers[1],
+                                mRenderPaint);
+
+                    } else if (open < close) {
+
+                        if (dataSet.getIncreasingColor() == ColorTemplate.COLOR_NONE) {
+                            mRenderPaint.setColor(dataSet.getColor(j));
+                        } else {
+                            mRenderPaint.setColor(dataSet.getIncreasingColor());
+                        }
+
+                        mRenderPaint.setStyle(dataSet.getIncreasingPaintStyle());
+
+                        c.drawRect(
+                                mBodyBuffers[0], mBodyBuffers[1],
+                                mBodyBuffers[2], mBodyBuffers[3],
+                                mRenderPaint);
+                    } else { // equal values
+
+                        if (dataSet.getNeutralColor() == ColorTemplate.COLOR_NONE) {
+                            mRenderPaint.setColor(dataSet.getColor(j));
+                        } else {
+                            mRenderPaint.setColor(dataSet.getNeutralColor());
+                        }
+
+                        c.drawLine(
+                                mBodyBuffers[0], mBodyBuffers[1],
+                                mBodyBuffers[2], mBodyBuffers[3],
+                                mRenderPaint);
                     }
-
-                    mRenderPaint.setStyle(dataSet.getDecreasingPaintStyle());
-
-                    c.drawRect(
-                            mBodyBuffers[0], mBodyBuffers[3],
-                            mBodyBuffers[2], mBodyBuffers[1],
-                            mRenderPaint);
-
-                } else if (open < close) {
-
-                    if (dataSet.getIncreasingColor() == ColorTemplate.COLOR_NONE) {
-                        mRenderPaint.setColor(dataSet.getColor(j));
-                    } else {
-                        mRenderPaint.setColor(dataSet.getIncreasingColor());
-                    }
-
-                    mRenderPaint.setStyle(dataSet.getIncreasingPaintStyle());
-
-                    c.drawRect(
-                            mBodyBuffers[0], mBodyBuffers[1],
-                            mBodyBuffers[2], mBodyBuffers[3],
-                            mRenderPaint);
-                } else { // equal values
-
-                    if (dataSet.getNeutralColor() == ColorTemplate.COLOR_NONE) {
-                        mRenderPaint.setColor(dataSet.getColor(j));
-                    } else {
-                        mRenderPaint.setColor(dataSet.getNeutralColor());
-                    }
-
-                    c.drawLine(
-                            mBodyBuffers[0], mBodyBuffers[1],
-                            mBodyBuffers[2], mBodyBuffers[3],
-                            mRenderPaint);
                 }
             } else {
 
@@ -315,8 +319,8 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
                         Utils.drawImage(
                                 c,
                                 icon,
-                                (int)(x + iconsOffset.x),
-                                (int)(y + iconsOffset.y),
+                                (int) (x + iconsOffset.x),
+                                (int) (y + iconsOffset.y),
                                 icon.getIntrinsicWidth(),
                                 icon.getIntrinsicHeight());
                     }
