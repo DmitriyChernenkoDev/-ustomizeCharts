@@ -223,7 +223,7 @@ public class XAxisRenderer extends AxisRenderer {
                     }
                 }
 
-                float y = pos+27; // float y = pos+30; for rn_Charts, 27 for other
+                float y = pos+31; // float y = pos+30; for rn_Charts, 27 for other
                 if(elements.length==2){
                     drawLabel(c, elements[0], x, pos, anchor, labelRotationAngleDegrees);
                     drawLabel(c, elements[1], x, y, anchor, labelRotationAngleDegrees);
