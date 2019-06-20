@@ -382,7 +382,7 @@ public class YAxisRenderer extends AxisRenderer {
         mAxisLabelPaint.setColor(Color.WHITE);
 
         if (ourRange > 10 ) {
-            c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 160, ourRange + 7 + offset, paint);
+            c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
             c.drawText("" + limitIndicatorBlock, positionX - 11, ourRange + offset, mAxisLabelPaint);
         }
     }
