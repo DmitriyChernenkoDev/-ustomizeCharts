@@ -475,7 +475,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
             if (mAxisRight.needsOffset()) {
 //                offsetRight += mAxisRight.getRequiredWidthSpace(mAxisRendererRight
 //                        .getPaintAxisLabels());
-                offsetRight += 160f;
+                offsetRight += 140f;
             }
 
             if (mXAxis.isEnabled() && mXAxis.isDrawLabelsEnabled()) {
