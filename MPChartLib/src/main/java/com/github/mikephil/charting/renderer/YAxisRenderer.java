@@ -124,7 +124,7 @@ public class YAxisRenderer extends AxisRenderer {
         float yOffset =0.f;
         
         if (mYAxis.isDrawGridLinesEnabled()) {
-            yOffset = 10.0f;
+            yOffset = -12.0f;
         }
 
         // draw
