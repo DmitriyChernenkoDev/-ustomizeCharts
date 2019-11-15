@@ -120,13 +120,17 @@ public class YAxisRenderer extends AxisRenderer {
         final int to = mYAxis.isDrawTopYLabelEntryEnabled()
                 ? mYAxis.mEntryCount
                 : (mYAxis.mEntryCount - 1);
+        
+        if (mYAxis.isDrawGridLinesEnabled()) {
+            float yOffset = 10.0f;
+        }
 
         // draw
         for (int i = from; i < to; i++) {
 
             String text = mYAxis.getFormattedLabel(i);
 
-            c.drawText(text, fixedPosition, positions[i * 2 + 1] + offset, mAxisLabelPaint);
+            c.drawText(text, fixedPosition, positions[i * 2 + 1] + offset + yOffset, mAxisLabelPaint);
 
         }
 
