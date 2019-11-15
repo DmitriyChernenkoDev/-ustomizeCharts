@@ -121,8 +121,10 @@ public class YAxisRenderer extends AxisRenderer {
                 ? mYAxis.mEntryCount
                 : (mYAxis.mEntryCount - 1);
         
+        float yOffset =0.f;
+        
         if (mYAxis.isDrawGridLinesEnabled()) {
-            float yOffset = 10.0f;
+            yOffset = 10.0f;
         }
 
         // draw
