@@ -124,7 +124,7 @@ public class YAxisRenderer extends AxisRenderer {
         float yOffset =0.f;
         
         List<LimitLine> limitLines = mYAxis.getLimitLines();
-        if (limitLines == null || limitLines.size() <= 0)
+        if (limitLines == null || limitLines.size() <= 0){
             yOffset = -12.0f;
         }
 
