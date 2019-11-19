@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Point;
 
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.YAxis;
@@ -392,20 +393,31 @@ public class YAxisRenderer extends AxisRenderer {
             Paint paintTriangle = new Paint();
             paintTriangle.setColor(indicatorBlockColor);
             paintTriangle.setStrokeWidth(10);
-            paintTriangle.setStyle(Paint.Style.FILL);
+            paintTriangle.setStyle(Paint.Style.STROKE);
             paintTriangle.setAntiAlias(true);
             
+//             Path path = new Path();
+//             path.moveTo(positionX - 45, ourRange - 10 + offset);
+//             path.lineTo(positionX - 15, ourRange - 28 + offset);
+
+// //             path.moveTo(positionX - 15, ourRange - 28 + offset);
+//             path.lineTo(positionX - 15, ourRange + 7 + offset);
+
+// //             path.moveTo(positionX - 15, ourRange + 7 + offset);
+//             path.lineTo(positionX - 45, ourRange - 10 + offset);
+
+//             path.close();
+            
+            Point a = new Point(100, 50);
+            Point b = new Point(25, 175);
+            Point c = new Point(175, 175);
             Path path = new Path();
-            path.moveTo(positionX - 45, ourRange - 10 + offset);
-            path.lineTo(positionX - 15, ourRange - 28 + offset);
-
-//             path.moveTo(positionX - 15, ourRange - 28 + offset);
-            path.lineTo(positionX - 15, ourRange + 7 + offset);
-
-//             path.moveTo(positionX - 15, ourRange + 7 + offset);
-            path.lineTo(positionX - 45, ourRange - 10 + offset);
-
+            path.moveTo(a.x, a.y);
+            path.lineTo(b.x, b.y);
+            path.lineTo(c.x, c.y);
+            path.lineTo(a.x, a.y);
             path.close();
+            canvas.drawPath(path, paint);
 
             c.drawPath(path, paintTriangle);
             c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
