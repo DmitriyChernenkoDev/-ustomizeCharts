@@ -399,10 +399,10 @@ public class YAxisRenderer extends AxisRenderer {
             path.moveTo(positionX - 45, ourRange - 10 + offset);
             path.lineTo(positionX - 15, ourRange - 28 + offset);
 
-            path.moveTo(positionX - 15, ourRange - 28 + offset);
+//             path.moveTo(positionX - 15, ourRange - 28 + offset);
             path.lineTo(positionX - 15, ourRange + 7 + offset);
 
-            path.moveTo(positionX - 15, ourRange + 7 + offset);
+//             path.moveTo(positionX - 15, ourRange + 7 + offset);
             path.lineTo(positionX - 45, ourRange - 10 + offset);
 
             path.close();
