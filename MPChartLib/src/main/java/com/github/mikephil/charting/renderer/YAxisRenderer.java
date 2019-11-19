@@ -389,6 +389,19 @@ public class YAxisRenderer extends AxisRenderer {
         mAxisLabelPaint.setColor(Color.WHITE);
 
         if (ourRange > 10 ) {
+            Path path = new Path();
+            path.moveTo(positionX - 45, ourRange - 10 + offset);
+            path.lineTo(positionX - 15, ourRange - 28 + offset);
+
+            path.moveTo(positionX - 15, ourRange - 28 + offset);
+            path.lineTo(positionX - 15, ourRange + 7 + offset);
+
+            path.moveTo(positionX - 15, ourRange + 7 + offset);
+            path.lineTo(positionX - 45, ourRange - 10 + offset);
+
+            path.close();
+
+            c.drawPath(path, paint);
             c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
             c.drawText("" + limitIndicatorBlock, positionX - 11, ourRange + offset, mAxisLabelPaint);
         }
