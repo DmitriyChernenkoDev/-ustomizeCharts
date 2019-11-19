@@ -392,8 +392,8 @@ public class YAxisRenderer extends AxisRenderer {
         if (ourRange > 10 ) {
             Paint paintTriangle = new Paint();
             paintTriangle.setColor(indicatorBlockColor);
-            paintTriangle.setStrokeWidth(10);
-            paintTriangle.setStyle(Paint.Style.STROKE);
+//             paintTriangle.setStrokeWidth(10);
+            paintTriangle.setStyle(Paint.Style.FILL);
             paintTriangle.setAntiAlias(true);
             
             Path path = new Path();
