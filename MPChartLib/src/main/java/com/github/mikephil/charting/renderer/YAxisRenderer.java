@@ -402,7 +402,7 @@ public class YAxisRenderer extends AxisRenderer {
             path.close();
 
             c.drawPath(path, paint);
-            c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
+            c.drawRect(positionX - 95, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
             c.drawText("" + limitIndicatorBlock, positionX - 11, ourRange + offset, mAxisLabelPaint);
         }
     }
