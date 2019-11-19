@@ -396,28 +396,13 @@ public class YAxisRenderer extends AxisRenderer {
             paintTriangle.setStyle(Paint.Style.STROKE);
             paintTriangle.setAntiAlias(true);
             
-//             Path path = new Path();
-//             path.moveTo(positionX - 45, ourRange - 10 + offset);
-//             path.lineTo(positionX - 15, ourRange - 28 + offset);
-
-// //             path.moveTo(positionX - 15, ourRange - 28 + offset);
-//             path.lineTo(positionX - 15, ourRange + 7 + offset);
-
-// //             path.moveTo(positionX - 15, ourRange + 7 + offset);
-//             path.lineTo(positionX - 45, ourRange - 10 + offset);
-
-//             path.close();
-            
-            Point a = new Point(100, 50);
-            Point b = new Point(25, 175);
-            Point c = new Point(175, 175);
             Path path = new Path();
-            path.moveTo(a.x, a.y);
-            path.lineTo(b.x, b.y);
-            path.lineTo(c.x, c.y);
-            path.lineTo(a.x, a.y);
+            path.moveTo(positionX - 25, ourRange - 9 + offset);
+            path.lineTo(positionX - 15, ourRange - 28 + offset);
+            path.lineTo(positionX - 15, ourRange + 7 + offset);
+            path.lineTo(positionX - 25, ourRange - 9 + offset);
+
             path.close();
-            canvas.drawPath(path, paint);
 
             c.drawPath(path, paintTriangle);
             c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
