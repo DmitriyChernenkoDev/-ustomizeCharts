@@ -387,25 +387,28 @@ public class YAxisRenderer extends AxisRenderer {
         float differentRangeFromZero = ((different * gradeDifferent) / limitDifferent);
         float ourRange = gradeSecond - differentRangeFromZero;
 
-        mAxisLabelPaint.setColor(Color.WHITE);
+        mAxisLabelPaint.setColor(Color.BLACK);
 
         if (ourRange > 10 ) {
             Paint paintTriangle = new Paint();
             paintTriangle.setColor(indicatorBlockColor);
-//             paintTriangle.setStrokeWidth(10);
             paintTriangle.setStyle(Paint.Style.FILL);
             paintTriangle.setAntiAlias(true);
             
             Path path = new Path();
             path.moveTo(positionX - 25, ourRange - 9 + offset);
-            path.lineTo(positionX - 14, ourRange - 28 + offset);
-            path.lineTo(positionX - 14, ourRange + 7 + offset);
+            path.lineTo(positionX - 15, ourRange - 28 + offset);
+            
+            path.lineTo(positionX + 140, ourRange - 28 + offset);
+            path.lineTo(positionX + 140, ourRange + 7 + offset);
+            
+            path.lineTo(positionX - 15, ourRange + 7 + offset);
             path.lineTo(positionX - 25, ourRange - 9 + offset);
 
             path.close();
 
             c.drawPath(path, paintTriangle);
-            c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
+//             c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
             c.drawText("" + limitIndicatorBlock, positionX - 11, ourRange + offset, mAxisLabelPaint);
         }
     }
