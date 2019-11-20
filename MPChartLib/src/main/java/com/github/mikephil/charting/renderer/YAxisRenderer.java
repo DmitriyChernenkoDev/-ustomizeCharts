@@ -396,20 +396,21 @@ public class YAxisRenderer extends AxisRenderer {
             paintTriangle.setAntiAlias(true);
             
             Path path = new Path();
-            path.moveTo(positionX - 25, ourRange - 9 + offset);
-            path.lineTo(positionX - 15, ourRange - 28 + offset);
+            path.moveTo(positionX - 45, ourRange - 9 + offset);
+            path.lineTo(positionX - 25, ourRange - 28 + offset);
             
             path.lineTo(positionX + 140, ourRange - 28 + offset);
             path.lineTo(positionX + 140, ourRange + 7 + offset);
             
-            path.lineTo(positionX - 15, ourRange + 7 + offset);
-            path.lineTo(positionX - 25, ourRange - 9 + offset);
+            path.lineTo(positionX - 25, ourRange + 7 + offset);
+            path.lineTo(positionX - 45, ourRange - 9 + offset);
 
             path.close();
 
             c.drawPath(path, paintTriangle);
-//             c.drawRect(positionX - 15, ourRange - 28 + offset, positionX + 140, ourRange + 7 + offset, paint);
+            mAxisLabelPaint.setTextSize(Utils.convertDpToPixel(12f));
             c.drawText("" + limitIndicatorBlock, positionX - 11, ourRange + offset, mAxisLabelPaint);
+            mAxisLabelPaint.setTextSize(mYAxis.getTextSize());
         }
     }
 }
