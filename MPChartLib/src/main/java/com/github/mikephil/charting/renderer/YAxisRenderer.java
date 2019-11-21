@@ -396,7 +396,8 @@ public class YAxisRenderer extends AxisRenderer {
             paintTriangle.setAntiAlias(true);
             
             Path path = new Path();
-            path.moveTo(positionX +155, ourRange - 9 + offset);
+            path.moveTo(positionX -45, ourRange - 9 + offset);
+            path.lineTo(positionX +155, ourRange - 9 + offset);
             path.lineTo(positionX +175, ourRange - 28 + offset);
             
             path.lineTo(positionX + 340, ourRange - 28 + offset);
