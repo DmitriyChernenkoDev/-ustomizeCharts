@@ -134,7 +134,7 @@ public class YAxisRenderer extends AxisRenderer {
 
             String text = mYAxis.getFormattedLabel(i);
 
-            c.drawText(text, fixedPosition+200, positions[i * 2 + 1] + offset + yOffset, mAxisLabelPaint);
+            c.drawText(text, fixedPosition, positions[i * 2 + 1] + offset + yOffset, mAxisLabelPaint);
 
         }
 
@@ -397,14 +397,13 @@ public class YAxisRenderer extends AxisRenderer {
             
             Path path = new Path();
             path.moveTo(positionX -45, ourRange - 9 + offset);
-            path.lineTo(positionX +155, ourRange - 9 + offset);
-            path.lineTo(positionX +175, ourRange - 28 + offset);
+            path.lineTo(positionX -25, ourRange - 28 + offset);
             
-            path.lineTo(positionX + 340, ourRange - 28 + offset);
-            path.lineTo(positionX + 340, ourRange + 7 + offset);
+            path.lineTo(positionX + 140, ourRange - 28 + offset);
+            path.lineTo(positionX + 140, ourRange + 7 + offset);
             
-            path.lineTo(positionX +175, ourRange + 7 + offset);
-            path.lineTo(positionX +155, ourRange - 9 + offset);
+            path.lineTo(positionX -25, ourRange + 7 + offset);
+            path.lineTo(positionX -45, ourRange - 9 + offset);
 
             path.close();
 
