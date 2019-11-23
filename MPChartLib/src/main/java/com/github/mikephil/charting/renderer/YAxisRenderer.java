@@ -398,20 +398,20 @@ public class YAxisRenderer extends AxisRenderer {
             paintTriangle.setAntiAlias(true);
             
             Path path = new Path();
-            path.moveTo(positionX -15, ourRange - 7f + offset);
+            path.moveTo(positionX -15, ourRange - 7.5f + offset);
             path.lineTo(positionX +5, ourRange - 25 + offset);
             
             path.lineTo(positionX + 170, ourRange - 25 + offset);
             path.lineTo(positionX + 170, ourRange + 11 + offset);
             
             path.lineTo(positionX +5, ourRange + 11 + offset);
-            path.lineTo(positionX -15, ourRange - 7f + offset);
+            path.lineTo(positionX -15, ourRange - 7.5f + offset);
 
             path.close();
 
             c.drawPath(path, paintTriangle);
             mAxisLabelPaint.setTextSize(Utils.convertDpToPixel(12f));
-            c.drawText("" + limitIndicatorBlock, positionX +5, ourRange + offset+3, mAxisLabelPaint);
+            c.drawText("" + limitIndicatorBlock, positionX +5, ourRange + offset+7, mAxisLabelPaint);
             mAxisLabelPaint.setTextSize(mYAxis.getTextSize());
         }
     }
