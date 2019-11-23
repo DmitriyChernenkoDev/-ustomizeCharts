@@ -123,10 +123,12 @@ public class YAxisRenderer extends AxisRenderer {
                 : (mYAxis.mEntryCount - 1);
         
         float yOffset =0.f;
+        float xOffset =30.f;
         
         List<LimitLine> limitLines = mYAxis.getLimitLines();
         if (limitLines == null || limitLines.size() <= 0){
             yOffset = -12.0f;
+            xOffset = 0.0f;
         }
 
         // draw
@@ -134,7 +136,7 @@ public class YAxisRenderer extends AxisRenderer {
 
             String text = mYAxis.getFormattedLabel(i);
 
-            c.drawText(text, fixedPosition+30, positions[i * 2 + 1] + offset + yOffset, mAxisLabelPaint);
+            c.drawText(text, fixedPosition+xOffset, positions[i * 2 + 1] + offset + yOffset, mAxisLabelPaint);
 
         }
 
