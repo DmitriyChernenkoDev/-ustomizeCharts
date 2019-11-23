@@ -411,7 +411,7 @@ public class YAxisRenderer extends AxisRenderer {
 
             c.drawPath(path, paintTriangle);
             mAxisLabelPaint.setTextSize(Utils.convertDpToPixel(12f));
-            c.drawText("" + limitIndicatorBlock, positionX +5, ourRange + offset, mAxisLabelPaint);
+            c.drawText("" + limitIndicatorBlock, positionX +5, ourRange + offset+3, mAxisLabelPaint);
             mAxisLabelPaint.setTextSize(mYAxis.getTextSize());
         }
     }
