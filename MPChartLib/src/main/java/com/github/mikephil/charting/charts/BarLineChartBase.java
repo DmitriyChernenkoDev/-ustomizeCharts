@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis.XAxisPosition;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.components.YAxis.AxisDependency;
@@ -475,8 +476,14 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
             if (mAxisRight.needsOffset()) {
 //                offsetRight += mAxisRight.getRequiredWidthSpace(mAxisRendererRight
 //                        .getPaintAxisLabels());
+
 //                 offsetRight += 140f;
-                offsetRight += Utils.convertDpToPixel(55f);
+                List<LimitLine> limitLines = offsetRight.getLimitLines();
+                if (limitLines == null || limitLines.size() <= 0){
+                        offsetRight += 140f;
+                } esle {
+                        offsetRight += Utils.convertDpToPixel(55f);
+                }                
             }
 
             if (mXAxis.isEnabled() && mXAxis.isDrawLabelsEnabled()) {
