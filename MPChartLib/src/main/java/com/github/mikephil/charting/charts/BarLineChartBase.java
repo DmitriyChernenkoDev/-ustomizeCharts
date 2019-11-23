@@ -481,7 +481,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
                 List<LimitLine> limitLines = offsetRight.getLimitLines();
                 if (limitLines == null || limitLines.size() <= 0){
                         offsetRight += 140f;
-                } esle {
+                } else {
                         offsetRight += Utils.convertDpToPixel(55f);
                 }                
             }
