@@ -398,14 +398,14 @@ public class YAxisRenderer extends AxisRenderer {
             paintTriangle.setAntiAlias(true);
             
             Path path = new Path();
-            path.moveTo(positionX -15, ourRange - 10 + offset);
+            path.moveTo(positionX -15, ourRange - 9.5 + offset);
             path.lineTo(positionX +5, ourRange - 28 + offset);
             
             path.lineTo(positionX + 170, ourRange - 28 + offset);
-            path.lineTo(positionX + 170, ourRange + 8 + offset);
+            path.lineTo(positionX + 170, ourRange + 7 + offset);
             
-            path.lineTo(positionX +5, ourRange + 8 + offset);
-            path.lineTo(positionX -15, ourRange - 10 + offset);
+            path.lineTo(positionX +5, ourRange + 7 + offset);
+            path.lineTo(positionX -15, ourRange - 9.5 + offset);
 
             path.close();
 
