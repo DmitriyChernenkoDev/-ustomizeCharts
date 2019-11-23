@@ -480,7 +480,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 //                        .getPaintAxisLabels());
 
 //                 offsetRight += 140f;
-                List<LimitLine> limitLines = offsetRight.getLimitLines();
+                List<LimitLine> limitLines = mAxisRight.getLimitLines();
                 if (limitLines == null || limitLines.size() <= 0){
                         offsetRight += 140f;
                 } else {
