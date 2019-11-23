@@ -37,6 +37,8 @@ import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Transformer;
 import com.github.mikephil.charting.utils.Utils;
 
+import java.util.List;
+
 /**
  * Base-class of LineChart, BarChart, ScatterChart and CandleStickChart.
  *
